@@ -39,29 +39,15 @@ class CajaAhorro(object):
         """ Metodo que realiza un deposito al saldo base de la caja de ahorro. """
         self.saldo += monto
         
-    # def menorOIgual(self, monto: int):
-    #     return monto <= self.saldo
-        
-    def puedeExtraer(self, monto: int):
-        """ Metodo que dice si se puede extraer cierto monto. """
-        if(monto <= self.saldo):
-            print("Esa cantidad de dinero si se puede extraer.")
-        else:
-            print("Esa cantidad de dinero es mayor al saldo de la cuenta.") 
-            
-            
-    def extraer(self, monto: int):
-        """ Metodo que realiza una extraccion al saldo base de la caja de ahorro. """
+    def puedeExtraer (self,un_monto):
+        return un_monto <= self.saldo
+              
+    def extraer(self, un_monto): 
+        if self.puedeExtraer(un_monto): 
+            self.__saldo -= un_monto
+        else: 
+            raise ValueError("Imposible realizar extracción.")
 
-
-        if (monto <= self.saldo):
-            self.saldo -= monto 
-        else:
-            raise ValueError('Imposible realizar extracción.')     
-        
-                  
-        
-        
 if __name__ == "__main__":
     cajaAhorro1 = CajaAhorro()
 
